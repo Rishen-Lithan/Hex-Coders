@@ -1,123 +1,180 @@
-import { GithubIcon, LinkedinIcon, TwitterIcon, InstagramIcon } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, ArrowUp, Code, Rocket } from 'lucide-react';
 
 export const Footer = () => {
-  return <footer className="bg-[#1A304F] text-white pt-16 pb-8">
-      <div className="container px-4 mx-auto">
-        <div className="grid grid-cols-1 gap-8 mb-12 md:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <h3 className="mb-4 text-2xl font-bold">
-              <span className="text-[#FCDC00]">Hex</span>Coders
-            </h3>
-            <p className="mb-4 text-gray-300">
-              Transforming ideas into powerful software solutions that drive
-              business growth.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                <GithubIcon size={20} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                <LinkedinIcon size={20} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                <TwitterIcon size={20} />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                <InstagramIcon size={20} />
-              </a>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const services = [
+    { name: "Web Development", icon: "🌐" },
+    { name: "Mobile Development", icon: "📱" },
+    { name: "Database Solutions", icon: "🗄️" },
+    { name: "Cloud Services", icon: "☁️" },
+    { name: "Security Consulting", icon: "🔐" }
+  ];
+
+  const quickLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Portfolio", href: "#portfolio" },
+    { name: "Contact", href: "#contact" }
+  ];
+
+  const socialLinks = [
+    { name: "GitHub", icon: Github, href: "#", color: "hover:bg-gray-800" },
+    { name: "LinkedIn", icon: Linkedin, href: "#", color: "hover:bg-blue-600" },
+    { name: "Twitter", icon: Twitter, href: "#", color: "hover:bg-sky-500" },
+    { name: "Instagram", icon: Instagram, href: "#", color: "hover:bg-pink-600" }
+  ];
+
+  return (
+    <footer className="relative bg-gradient-to-br from-[#1A304F] via-[#1A304F]/95 to-[#0f1a2e] text-white overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-[#FCDC00]/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-[#FCDC00]/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-1/4 w-2 h-2 bg-[#FCDC00] rounded-full animate-ping"></div>
+        <div className="absolute w-1 h-1 bg-white rounded-full bottom-40 left-1/3 animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/4 w-1.5 h-1.5 bg-[#FCDC00]/60 rounded-full animate-pulse"></div>
+      </div>
+
+      <button
+        onClick={scrollToTop}
+        className="absolute top-8 right-8 p-4 bg-[#FCDC00] text-[#1A304F] rounded-full shadow-xl hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 group z-10"
+      >
+        <ArrowUp size={24} className="transition-transform duration-300 group-hover:scale-110" />
+      </button>
+
+      <div className="container relative px-4 pt-20 pb-8 mx-auto">
+        <div className="grid grid-cols-1 gap-12 mb-16 lg:grid-cols-3">
+          
+          <div className="lg:col-span-1">
+            <div className="relative p-8 transition-all duration-500 border bg-white/5 backdrop-blur-sm rounded-3xl border-white/10 hover:bg-white/10">
+              <div className="absolute -top-4 left-6">
+                <div className="flex items-center gap-2 px-4 py-2 bg-[#FCDC00] text-[#1A304F] rounded-full shadow-lg">
+                  <Code size={18} />
+                  <span className="text-sm font-bold">HEXCODERS</span>
+                </div>
+              </div>
+              
+              <div className="mt-6">
+                <h3 className="mb-6 text-3xl font-bold">
+                  <span className="text-[#FCDC00] relative">
+                    Hex
+                    <svg className="absolute left-0 w-full h-2 -bottom-1" viewBox="0 0 100 8" fill="none">
+                      <path d="M2 6c20-2 40-2 96 0" stroke="#FCDC00" strokeWidth="2" strokeLinecap="round" opacity="0.6"/>
+                    </svg>
+                  </span>
+                  Coders
+                </h3>
+                <p className="mb-8 text-lg leading-relaxed text-gray-300">
+                  Transforming ideas into powerful software solutions that drive
+                  <span className="text-[#FCDC00] font-semibold"> business growth</span>.
+                </p>
+                
+                <div className="flex gap-4">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.href}
+                      className={`group relative p-3 bg-white/10 rounded-2xl border border-white/20 ${social.color} transition-all duration-300 hover:transform hover:scale-110 hover:shadow-lg`}
+                    >
+                      <social.icon size={20} className="text-white transition-colors duration-300 group-hover:text-white" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#FCDC00]/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
-          <div>
-            <h4 className="mb-4 text-lg font-bold">Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                  Web Development
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                  Mobile Development
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                  Database Solutions
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                  Cloud Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-300 hover:text-[#FCDC00]">
-                  Security Consulting
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-4 text-lg font-bold">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#home" className="text-gray-300 hover:text-[#FCDC00]">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-gray-300 hover:text-[#FCDC00]">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-gray-300 hover:text-[#FCDC00]">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#portfolio" className="text-gray-300 hover:text-[#FCDC00]">
-                  Portfolio
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-300 hover:text-[#FCDC00]">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-4 text-lg font-bold">Newsletter</h4>
-            <p className="mb-4 text-gray-300">
-              Subscribe to our newsletter for the latest updates and insights.
-            </p>
-            <form className="flex">
-              <input type="email" placeholder="Your email" className="w-full px-4 py-2 text-gray-800 rounded-l-md focus:outline-none" />
-              <button type="submit" className="bg-[#FCDC00] text-[#1A304F] px-4 py-2 rounded-r-md font-medium hover:bg-[#FCDC00]/90 transition-colors">
-                Subscribe
-              </button>
-            </form>
+
+          <div className="lg:col-span-2">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+              
+              <div className="relative p-8 transition-all duration-500 border bg-white/5 backdrop-blur-sm rounded-3xl border-white/10 hover:bg-white/10">
+                <div className="absolute -top-4 left-6">
+                  <div className="flex items-center gap-2 px-4 py-2 text-white rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-pink-500">
+                    <Rocket size={16} />
+                    <span className="text-sm font-bold">SERVICES</span>
+                  </div>
+                </div>
+                
+                <div className="mt-6">
+                  <ul className="space-y-4">
+                    {services.map((service, index) => (
+                      <li key={index}>
+                        <a
+                          className="flex items-center gap-4 p-3 transition-all duration-300 group rounded-xl hover:bg-white/10 hover:transform hover:translate-x-2"
+                        >
+                          <span className="text-2xl transition-transform duration-300 group-hover:scale-110">
+                            {service.icon}
+                          </span>
+                          <span className="text-gray-300 group-hover:text-[#FCDC00] font-medium transition-colors duration-300">
+                            {service.name}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="relative p-8 transition-all duration-500 border bg-white/5 backdrop-blur-sm rounded-3xl border-white/10 hover:bg-white/10">
+                <div className="absolute -top-4 left-6">
+                  <div className="flex items-center gap-2 px-4 py-2 text-white rounded-full shadow-lg bg-gradient-to-r from-blue-500 to-cyan-500">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                    <span className="text-sm font-bold">QUICK LINKS</span>
+                  </div>
+                </div>
+                
+                <div className="mt-6">
+                  <ul className="space-y-4">
+                    {quickLinks.map((link, index) => (
+                      <li key={index}>
+                        <a 
+                          href={link.href} 
+                          className="flex items-center gap-4 p-3 transition-all duration-300 group rounded-xl hover:bg-white/10 hover:transform hover:translate-x-2"
+                        >
+                          <div className="w-2 h-2 bg-[#FCDC00] rounded-full group-hover:scale-150 transition-transform duration-300"></div>
+                          <span className="text-gray-300 group-hover:text-[#FCDC00] font-medium transition-colors duration-300">
+                            {link.name}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="pt-8 border-t border-gray-700">
-          <div className="flex flex-col items-center justify-between md:flex-row">
-            <p className="text-sm text-gray-400">
-              &copy; {new Date().getFullYear()} HexCoders. All rights reserved.
-            </p>
-            <div className="flex mt-4 space-x-4 md:mt-0">
-              <a href="#" className="text-gray-400 text-sm hover:text-[#FCDC00]">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 text-sm hover:text-[#FCDC00]">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 text-sm hover:text-[#FCDC00]">
-                Cookie Policy
-              </a>
+
+        <div className="relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FCDC00]/20 via-transparent to-[#FCDC00]/20 blur-xl"></div>
+          <div className="relative pt-8 border-t border-white/20">
+            <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
+              <div className="flex items-center gap-4">
+                <div className="w-3 h-3 bg-[#FCDC00] rounded-full animate-pulse"></div>
+                <p className="text-gray-400">
+                  &copy; {new Date().getFullYear()} <span className="text-[#FCDC00] font-semibold">HexCoders</span>. All rights reserved.
+                </p>
+              </div>
+              <div className="flex gap-6">
+                {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((item, index) => (
+                  <a
+                    key={index}
+                    href="#"
+                    className="relative text-sm text-gray-400 hover:text-[#FCDC00] transition-colors duration-300 group"
+                  >
+                    {item}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FCDC00] group-hover:w-full transition-all duration-300"></span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
